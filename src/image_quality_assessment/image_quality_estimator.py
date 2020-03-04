@@ -96,5 +96,10 @@ class DLQualityEstimator:
 
         return scores
 
+    def get_best_frames(self, k=5):
+        """ k - the number of frames to return"""
+        scores = self.estimate_quality_qnet()
+        return np.sort(scores)[k:]
+
 
 

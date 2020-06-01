@@ -5,17 +5,17 @@ import detect_face
 
 from mtcnn import MTCNN
 
-from image_quality_assessment.image_quality_estimator import QualityEstimator, DLQualityEstimator
+from image_quality_assessment.image_quality_estimation import QualityEstimator, FaceQNetQualityEstimator
 
 
 class FacialImageProcessing:
-    # def __init__(self):
+    def __init__(self):
+        self.detector = MTCNN()
 
-    @staticmethod
-    def detect_face(filename):
+    def detect_face(self, filename):
         draw = cv2.imread(filename)
-        detector = MTCNN()
-        points = detector.detect_faces(draw)
+
+        points = self.detector.detect_faces(draw)
 
         bounding_box = points[0]['box']
 
@@ -52,6 +52,7 @@ class FacialImageProcessing:
         for filename in args:
             draw = self.process_image(filename)
             # draw=cv2.resize(draw, (192,192))
+
             #TODO: detecet face
             # draw = imgProcessing.show_detection_results(draw)
 
@@ -70,5 +71,5 @@ if __name__ == '__main__':
         face = FacialImageProcessing.detect_face(f)
         faces.append(face)
 
-    qe = DLQualityEstimator(faces)
+    qe = FaceQNetQualityEstimator(faces)
     qe.estimate_quality_qnet()

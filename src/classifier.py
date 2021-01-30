@@ -325,17 +325,11 @@ def classify_faceqnet(scores_file, knn_model_path, model='mobile_vgg', k=2, all_
         video_id = template_to_ids[video]
 
         if len(frame_features) == 1:
-            # print("ONE FEATURE!!!!")
-            # print(video)
-
             mean_arr = frame_features[0]
         else:
             mean_arr = np.mean(frame_features, axis=0)
 
         if np.isscalar(mean_arr):
-            # print("NAAAAAAAAAAAAAAAAANNNNNNAAAAAAAAAAAAAAAAAANNN")
-            # print(video)
-
             continue
 
         X.append(mean_arr)
@@ -391,22 +385,15 @@ def classify_brisque(scores_file, knn_model_path, model='mobile_vgg', k=2, all_k
         video_id = template_to_ids[video]
 
         if len(frame_features) == 1:
-            # print("ONE FEATURE!!!!")
-            # print(video)
-
             mean_arr = frame_features[0]
         else:
             mean_arr = np.mean(frame_features, axis=0)
 
         if np.isscalar(mean_arr):
-            # print("NAAAN")
-            # print(video)
             continue
 
         X.append(mean_arr)
         labels.append(int(video_id))
-
-    print("FINISH")
 
     X = np.array(X)
 
@@ -447,24 +434,15 @@ def classify_brightness(scores_file, knn_model_path, model='mobile_vgg', k=2, al
             if frame_data.frame_id in frames_features_map:
                 frame_features.append(frames_features_map[frame_data.frame_id])
             else:
-                # print("NO such frame!")
-                # print(frame_data.frame_id)
                 i += 1
-        # print(f'{i} frames from {n} are skipped')
-
         video_id = template_to_ids[video]
 
         if len(frame_features) == 1:
-            # print("ONE FEATURE!!!!")
-            # print(video)
-
-            mean_arr = frame_features[0]
+           mean_arr = frame_features[0]
         else:
             mean_arr = np.mean(frame_features, axis=0)
 
         if np.isscalar(mean_arr):
-            # print("NAAAN")
-            # print(video)
             continue
 
         X.append(mean_arr)
@@ -511,17 +489,11 @@ def classify_contrast(scores_file, knn_model_path, model='mobile_vgg', k=2, all_
             if frame_data.frame_id in frames_features_map:
                 frame_features.append(frames_features_map[frame_data.frame_id])
             else:
-                # print("NO such frame!")
-                # print(frame_data.frame_id)
                 i += 1
-        # print(f'{i} frames from {n} are skipped')
 
         video_id = template_to_ids[video]
 
         if len(frame_features) == 1:
-            # print("ONE FEATURE!!!!")
-            # print(video)
-
             mean_arr = frame_features[0]
         else:
             mean_arr = np.mean(frame_features, axis=0)
@@ -577,24 +549,16 @@ def classify_fiiqa(scores_file, knn_model_path, model='mobile_vgg', k=2, all_k=F
             if frame_data.frame_id in frames_features_map:
                 frame_features.append(frames_features_map[frame_data.frame_id])
             else:
-                # print("NO such frame!")
-                # print(frame_data.frame_id)
                 i += 1
-        # print(f'{i} frames from {n} are skipped')
 
         video_id = template_to_ids[video]
 
         if len(frame_features) == 1:
-            # print("ONE FEATURE!!!!")
-            # print(video)
-
             mean_arr = frame_features[0]
         else:
             mean_arr = np.mean(frame_features, axis=0)
 
         if np.isscalar(mean_arr):
-            # print("NAAAN")
-            # print(video)
             continue
 
         X.append(mean_arr)

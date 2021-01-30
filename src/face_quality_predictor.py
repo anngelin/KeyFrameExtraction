@@ -53,9 +53,6 @@ def face_qnet_pipeline_knn(model_path, dataset_path):
 
     best_frames = {}
 
-    import pdb
-    pdb.set_trace()
-
     for video_id, frames_data in video_frames.items():
         cropped_frames = []
         frames_labels = []
@@ -361,7 +358,6 @@ if __name__ == '__main__':
     # QNet Pipeline
     #################
     model_qnet = '../models/FaceQnet.h5'
-    # face_qnet_pipeline_knn(model_qnet, dataset_path)
 
     face_qnet_save_scores(model_qnet, dataset_path)
 
@@ -369,7 +365,6 @@ if __name__ == '__main__':
     # QNet Light Pipeline
     #################
     # model_qnet = './models/mobilenet_faceqnet-02-0.0013.hdf5'
-    # face_qnet_pipeline_knn(model_qnet, dataset_path)
 
     # face_qnet_light_save_scores(model_qnet, dataset_path)
 

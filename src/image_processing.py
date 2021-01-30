@@ -60,16 +60,13 @@ class FacialImageProcessing:
 
 
 if __name__ == '__main__':
-    filename = 'C:\\akharche\\MasterThesis\\TestImages\\3.jfif'
-    # ip = FacialImageProcessing()
-    # ip.process_image(filename)
+    filename = '3.jfif'
+    ip = FacialImageProcessing()
+    ip.process_image(filename)
 
-    filenames = ['C:\\akharche\\MasterThesis\\TestImages\\3.jfif', 'C:\\akharche\\MasterThesis\\TestImages\\1.jfif']
     faces = []
+    face = FacialImageProcessing.detect_face(filename)
+    faces.append(face)
 
-    for f in filenames:
-        face = FacialImageProcessing.detect_face(f)
-        faces.append(face)
-
-    qe = FaceQNetQualityEstimator(faces)
-    qe.estimate_quality_qnet()
+    # qe = FaceQNetQualityEstimator(faces)
+    # qe.estimate_quality_qnet()
